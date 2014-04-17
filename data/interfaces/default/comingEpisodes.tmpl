@@ -247,7 +247,7 @@
         </tr>
         <tr>
           <td style="vertical-align: top;">
-            <span class="title">Airs:</span> <span>$cur_result["airs"] on $cur_result["network"]</span>
+            <span class="title">Airs:</span> <span>  $cur_result["airs"].split(' ')[0] datetime($cur_result["airs"].split(' ')[1] $cur_result["airs"].split(' ')[2])-timedelta(hours=1) on $cur_result["network"]</span>
 #if int($cur_result["quality"]) in $qualityPresets:
  [<span class="title">$qualityPresetStrings[int($cur_result["quality"])]</span>]<br />
 #else:
