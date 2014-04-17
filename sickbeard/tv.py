@@ -834,7 +834,7 @@ class TVShow(object):
         if self.network != None:
             toReturn += "network: " + self.network + "\n"
         if self.airs != None:
-            toReturn += "airs: " + self.airs + "\n"
+            toReturn += "airs: " + self.airs + " testing \n"
         if self.status != None:
             toReturn += "status: " + self.status + "\n"
         toReturn += "startyear: " + str(self.startyear) + "\n"
