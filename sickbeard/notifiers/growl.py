@@ -115,11 +115,11 @@ class GrowlNotifier:
             print pc
             opts['host'] = pc[0]
             opts['port'] = pc[1]
-            logger.log(u"GROWL: Sending message '" + message + "' to " + opts['host'] + ":" + str(opts['port']))
+            logger.log(u"GROWL: Sending message '" + message + "' to " + opts['host'] + ":" + str(opts['port']), logger.DEBUG)
             try:
                 return self._send_growl(opts, message)
             except Exception, e:
-                logger.log(u"GROWL: Unable to send growl to " + opts['host'] + ":" + str(opts['port']) + " - " + ex(e))
+                logger.log(u"GROWL: Unable to send growl to " + opts['host'] + ":" + str(opts['port']) + " - " + ex(e), logger.WARNING)
                 return False
 
     def _sendRegistration(self, host=None, password=None, name="Sick Beard Notification"):
@@ -161,7 +161,7 @@ class GrowlNotifier:
         try:
             return self._send(opts['host'], opts['port'], register.encode(), opts['debug'])
         except Exception, e:
-            logger.log(u"GROWL: Unable to send growl to " + opts['host'] + ":" + str(opts['port']) + " - " + ex(e))
+            logger.log(u"GROWL: Unable to send growl to " + opts['host'] + ":" + str(opts['port']) + " - " + ex(e), logger.WARNING)
             return False
 
 ##############################################################################
@@ -179,11 +179,11 @@ class GrowlNotifier:
     def test_notify(self, host, password):
         result = self._sendRegistration(host, password, "Test")
         if result:
-            return self._notify("Test Growl", "Testing Growl settings from Sick Beard", "Test", host, password, force=True)
+            return self._notify("Test Growl", "This is a test notification from Sick Beard", "Test", host, password, force=True)
         else:
             return result
 
-    def update_library(self, showName=None):
+    def update_library(self, ep_obj=None):
         pass
 
 notifier = GrowlNotifier
